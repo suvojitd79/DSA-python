@@ -1,4 +1,3 @@
-
 '''
 given two strings. checks if they're anagrams. you can ignore spaces & capitalization
 
@@ -50,4 +49,57 @@ def pairsum(l, k):
             _.remove([__[1], __[0]])
     return _, len(_)
 
+
+'''
+given two arrays, where second array is constructed by shuffling the 1st array and deleting one random element from the first array, find the deleted element
+'''
+
+
+def missing2array(l1, l2):
+    ans = 0
+    for x in l1:
+        ans ^= x
+    for x in l2:
+        ans ^= x
+    return ans
+
+
+'''
+given an array, find the contiguous subarray with max-sum
+'''
+
+
+def maxsum(l):
+    if len(l) == 0:
+        return float('-inf')
+    max_so_far = l[0]
+    max_global = l[0]
+    start = end = 0
+    for x in range(1, len(l)):
+
+        if l[x] > 0 and (l[x] + max_so_far < l[x]):
+            max_so_far = l[x]
+            start = x
+        else:
+            max_so_far += l[x]
+
+        if max_so_far > max_global:
+            max_global = max_so_far
+            end = x
+
+    return max_global, start, end
+
+
+'''
+sentence reversal
+i: i love coding
+o: coding love i
+'''
+
+
+def sentence_reversal(s=''):
+    s = s.strip()  # remove the leading & trailing white space characters
+    l = s.split()
+    l.reverse()
+    return ' '.join(l)
 
