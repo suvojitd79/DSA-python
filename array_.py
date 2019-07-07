@@ -7,6 +7,9 @@ O(n) time + O(1) space -bit
 '''
 
 
+from collections import OrderedDict
+
+
 def anagrams(s1, s2, type='sort'):
     if not type in ['sort', 'count', 'bit']:
         raise ValueError('{0} can not be applied '.format(type))
@@ -102,4 +105,42 @@ def sentence_reversal(s=''):
     l = s.split()
     l.reverse()
     return ' '.join(l)
+
+
+'''
+string compression
+i: AABBSSSSA
+o: A3B2S4
+'''
+
+
+def compression(s):
+    d = OrderedDict()
+    for _ in s:
+        if _ in d:
+            d.update({_: d[_]+1})
+        else:
+            d.update({_: 1})
+    ans = ''
+    for _ in d:
+        ans += _+str(d[_])
+    return ans
+
+
+'''
+unique chars
+i: abcd -> true
+i: abacd -> false
+'''
+
+
+def isunique(s):
+    _ = set()
+    for x in s:
+        if x in _:
+            return False
+        else:
+            _.add(x)
+    return True
+
 

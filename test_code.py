@@ -31,3 +31,17 @@ def test_sentence_reversal():
         'i love coding python  ') == 'python coding love i'
     assert array_.sentence_reversal(
         'i am the fuck**g ninja') == 'ninja fuck**g the am i'
+
+
+def test_compression():
+    assert array_.compression('AAABB') == 'A3B2'
+    assert array_.compression('AAABBCCDA') == 'A4B2C2D1'
+    assert array_.compression('ABC') == 'A1B1C1'
+    assert array_.compression('ABCABC') == 'A2B2C2'
+    assert array_.compression('AAABBBCCAA') == 'A5B3C2'
+
+
+def test_isunique():
+    assert array_.isunique('ABACD') == False
+    assert array_.isunique('abcde') == True
+    assert array_.isunique('abcded') == False
